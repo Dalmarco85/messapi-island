@@ -1,0 +1,94 @@
+[gd_scene load_steps=8 format=3 uid="uid://main"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2")
+centered = false
+position = Vector2(0, 0)
+
+[node name="GameTime" type="Node" parent="."]
+script = ExtResource("3")
+
+[node name="SkyOverlay" type="ColorRect" parent="."]
+position = Vector2(0, 0)
+size = Vector2(960, 540)
+color = Color(0, 0, 0, 0.6)
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("4")
+position = Vector2(340, 400)
+
+[node name="PlayerSprite" type="Sprite2D" parent="Player"]
+texture = ExtResource("5")
+hframes = 1
+vframes = 1
+offset = Vector2(0, 0)
+
+[node name="Hut" type="Sprite2D" parent="."]
+texture = ExtResource("6")
+position = Vector2(420, 380)
+
+[node name="CaveEntrance" type="Area2D" parent="."]
+position = Vector2(600, 390)
+
+[node name="CaveSprite" type="Sprite2D" parent="CaveEntrance"]
+texture = ExtResource("7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CaveEntrance"]
+shape = SubResource("1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Clock" type="Label" parent="CanvasLayer"]
+position = Vector2(16, 10)
+text = "08:00"
+theme_override_font_sizes/font_size = 20
+
+[node name="Season" type="Label" parent="CanvasLayer"]
+position = Vector2(90, 10)
+text = "Primavera"
+theme_override_font_sizes/font_size = 20
+
+[node name="TouchControls" type="Control" parent="CanvasLayer"]
+anchors_preset = 0
+offset_right = 960.0
+offset_bottom = 540.0
+mouse_filter = 2
+
+[node name="Up" type="TouchScreenButton" parent="CanvasLayer/TouchControls"]
+position = Vector2(96, 360)
+texture_normal = ExtResource("8")
+
+[node name="Down" type="TouchScreenButton" parent="CanvasLayer/TouchControls"]
+position = Vector2(96, 456)
+texture_normal = ExtResource("9")
+
+[node name="Left" type="TouchScreenButton" parent="CanvasLayer/TouchControls"]
+position = Vector2(24, 408)
+texture_normal = ExtResource("10")
+
+[node name="Right" type="TouchScreenButton" parent="CanvasLayer/TouchControls"]
+position = Vector2(168, 408)
+texture_normal = ExtResource("11")
+
+[node name="Attack" type="TouchScreenButton" parent="CanvasLayer/TouchControls"]
+position = Vector2(840, 420)
+texture_normal = ExtResource("12")
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/island_bg.png" id="2"]
+[ext_resource type="Script" path="res://scripts/game_time.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="4"]
+[ext_resource type="Texture2D" path="res://assets/player.png" id="5"]
+[ext_resource type="Texture2D" path="res://assets/hut.png" id="6"]
+[ext_resource type="Texture2D" path="res://assets/cave.png" id="7"]
+[ext_resource type="Texture2D" path="res://assets/btn_up.png" id="8"]
+[ext_resource type="Texture2D" path="res://assets/btn_down.png" id="9"]
+[ext_resource type="Texture2D" path="res://assets/btn_left.png" id="10"]
+[ext_resource type="Texture2D" path="res://assets/btn_right.png" id="11"]
+[ext_resource type="Texture2D" path="res://assets/btn_attack.png" id="12"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 18.0
